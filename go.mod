@@ -1,3 +1,3 @@
-module github.com/aarontaylor/pokedexcli
+module pokedexcli
 
 go 1.24.4
