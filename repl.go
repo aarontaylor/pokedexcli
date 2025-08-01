@@ -8,11 +8,11 @@ import (
 
 	"pokedexcli/internal/pokeapi"
 )
-
 type config struct {
 	pokeapiClient    pokeapi.Client
 	nextLocationsURL *string
 	prevLocationsURL *string
+	caughtPokemon    map[string]pokeapi.Pokemon
 }
 
 func startRepl(cfg *config) {
@@ -57,13 +57,22 @@ type cliCommand struct {
 	description string
 	callback    func(*config, ...string) error
 }
-
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
 			name:        "help",
 			description: "Displays a help message",
 			callback:    commandHelp,
+		},
+		"catch": {
+			name:        "catch <pokemon_name>",
+			description: "Attempt to catch a pokemon",
+			callback:    commandCatch,
+		},
+		"inspect": {
+			name:        "inspect <pokemon_name>",
+			description: "View details about a caught Pokemon",
+			callback:    commandInspect,
 		},
 		"explore": {
 			name:        "explore <location_name>",
