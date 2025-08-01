@@ -57,6 +57,7 @@ type cliCommand struct {
 	description string
 	callback    func(*config, ...string) error
 }
+
 func getCommands() map[string]cliCommand {
 	return map[string]cliCommand{
 		"help": {
@@ -88,6 +89,11 @@ func getCommands() map[string]cliCommand {
 			name:        "mapb",
 			description: "Get the previous page of locations",
 			callback:    commandMapb,
+		},
+		"pokedex": {
+			name:        "pokedex",
+			description: "See all the pokemon you've caught",
+			callback:    commandPokedex,
 		},
 		"exit": {
 			name:        "exit",
